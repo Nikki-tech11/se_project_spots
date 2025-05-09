@@ -21,3 +21,5 @@ Responsive Design
 ![Long Bridge](./images/smaller%20version%20of%20long%20bridge.png "A Very Long Bridge")
 
 Deployment Link: https://nikki-tech11.github.io/se_project_spots/
+
+A Video Explanation ===>>> https://drive.google.com/file/d/1mv80zxGffwQB5Fwy8UIEtdozoq4X00On/view?usp=sharing
