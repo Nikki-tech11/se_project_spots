@@ -32,10 +32,12 @@
   background-color: transparent;
   padding: 0;
   transition: opacity 0.3s;
+  opacity: 0.4;
 }
 
 .card__like-btn:hover {
   cursor: pointer;
+  opacity: 0.1;
 }
 
 @media screen and (max-width: 627px) {
@@ -51,9 +53,6 @@
   }
 
   .card__title {
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
     max-width: 95px;
     margin: 0 0 0;
     line-height: 1;
