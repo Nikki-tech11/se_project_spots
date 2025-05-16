@@ -4,6 +4,7 @@
   object-fit: cover;
   display: block;
   border-radius: 8px;
+  margin-bottom: 12px;
 }
 
 .card__title {
@@ -16,6 +17,7 @@
   white-space: nowrap;
   overflow: hidden;
   max-width: 413px;
+  margin: 0;
 }
 
 .card__content {
@@ -32,7 +34,7 @@
   background-color: transparent;
   padding: 0;
   transition: opacity 0.3s;
-  opacity: 0.4;
+  opacity: 1;
 }
 
 .card__like-btn:hover {
@@ -44,7 +46,6 @@
   .card {
     display: flex;
     flex-direction: column;
-    row-gap: 20px;
   }
 
   .card__image {
@@ -53,8 +54,8 @@
   }
 
   .card__title {
-    max-width: 95px;
-    margin: 0 0 0;
+    max-width: 235px;
+    margin: 0;
     line-height: 1;
     font-size: 16px;
   }
@@ -62,5 +63,11 @@
   .card__like-btn {
     width: 20px;
     height: 18px;
+    margin: 0;
+  }
+
+  .card__content {
+    padding: 0;
+    gap: 5px;
   }
 }
