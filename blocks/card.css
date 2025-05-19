@@ -16,7 +16,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  max-width: 413px;
+  max-width: 350px;
   margin: 0;
 }
 
@@ -35,6 +35,9 @@
   padding: 0;
   transition: opacity 0.3s;
   opacity: 0.4;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
 }
 
 .card__like-btn:hover {
