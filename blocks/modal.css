@@ -79,11 +79,11 @@
   padding: 16px 0 16px 12px;
   font-size: 20px;
   box-sizing: border-box;
-  color: rgba(33, 33, 33, 0.3);
+  color: rgb(33, 33, 33);
 }
 
 .modal__input:hover {
-  opacity: 1;
+  border: 1px solid rgba(33, 33, 33, 1);
 }
 
 .modal__input::placeholder {
@@ -106,7 +106,7 @@
 }
 
 .modal__save-btn:hover {
-  opacity: 1;
+  opacity: 0.8;
   cursor: pointer;
 }
 
