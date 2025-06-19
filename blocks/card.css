@@ -13,6 +13,10 @@
   margin-bottom: 12px;
 }
 
+.card__image:hover {
+  cursor: pointer;
+}
+
 .card__title {
   font-family: poppins, Arial, sans-serif;
   font-weight: 500;

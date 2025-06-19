@@ -101,14 +101,6 @@ function handleEditProfileFormSubmit(evt) {
 
 editProfileForm.addEventListener("submit", handleEditProfileFormSubmit);
 
-function handleAddCardSubmit(evt) {
-  evt.preventDefault();
-  console.log("Image URL:", cardImageInput.value);
-  console.log("Caption:", captionInput.value);
-  // newPostModal.classList.remove("modal_is-opened");
-  openModal(newPostModal);
-}
-
 addCardFormElement.addEventListener("submit", function (evt) {
   evt.preventDefault();
 
@@ -116,7 +108,10 @@ addCardFormElement.addEventListener("submit", function (evt) {
   const cardElement = getCardElement(inputValue);
   cardsList.prepend(cardElement);
 
-  addCardModal.classList.remove("modal_is-opened");
+  cardImageInput.value = "";
+  captionInput.value = "";
+
+  closeModal(newPostModal);
 });
 
 initialCards.forEach(function (item) {
