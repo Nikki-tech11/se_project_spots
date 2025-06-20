@@ -181,15 +181,15 @@
   }
 
   .modal__container {
-    max-width: 300px;
-    padding: 12px;
+    width: 100%;
+    padding: 0;
   }
 
-  .modal__image {
-    max-width: 288px;
-    max-height: 192px;
+  /* .modal__image {
+    width: 100%;
+    height: auto;
     border-radius: 4px;
-  }
+  }*/
 
   .modal__caption {
     max-width: 159px;

@@ -59,7 +59,7 @@ const cardsList = document.querySelector(".cards__list");
 const previewModal = document.querySelector("#preview-modal");
 const previewImage = previewModal.querySelector(".modal__image");
 const previewCaption = previewModal.querySelector(".modal__caption");
-const previewCloseBtn = previewModal.querySelector(".modal__close");
+const previewCloseBtn = previewModal.querySelector(".modal__close-btn");
 
 function openModal(modal) {
   modal.classList.add("modal_is-opened");
