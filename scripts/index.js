@@ -115,6 +115,11 @@ addCardFormElement.addEventListener("submit", function (evt) {
   // captionInput.value = "";
   addCardFormElement.reset();
 
+  const addCardSubmitBtn = addCardFormElement.querySelector(
+    settings.submitButtonSelector
+  );
+  disableButton(addCardSubmitBtn, settings);
+
   closeModal(newPostModal);
 });
 
@@ -154,4 +159,26 @@ function getCardElement(data) {
 
 previewCloseBtn.addEventListener("click", function () {
   closeModal(previewModal);
+});
+
+editProfileModal.addEventListener("click", function (evt) {
+  if (evt.target === editProfileModal) {
+    closeModal(editProfileModal);
+  }
+});
+
+newPostModal.addEventListener("click", function (evt) {
+  if (evt.target === newPostModal) {
+    closeModal(newPostModal);
+  }
+});
+
+document.addEventListener("keydown", function (evt) {
+  if (evt.key === "Escape") {
+    const openedModal = document.querySelector(".modal_is-opened");
+    if (openedModal) {
+      evt.preventDefault();
+      closeModal(openedModal);
+    }
+  }
 });
