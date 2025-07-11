@@ -182,3 +182,9 @@ document.addEventListener("keydown", function (evt) {
     }
   }
 });
+
+previewModal.addEventListener("click", function (evt) {
+  if (evt.target === previewModal) {
+    closeModal(previewModal);
+  }
+});
