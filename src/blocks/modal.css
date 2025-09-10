@@ -24,6 +24,7 @@
 }
 
 .modal__container {
+  position: relative;
   max-width: 730px;
   width: 100%;
   border-radius: 8px;
@@ -35,19 +36,26 @@
 
 .modal__close-btn {
   position: absolute;
-  top: 32px;
-  right: 50px;
+  top: 47px; /* Adjust as needed */
+  right: 57px; /* Adjust as needed */
+  width: 24px;
+  height: 24px;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  cursor: pointer;
+}
+
+#delete-modal .modal__close-btn {
+  position: absolute;
+  top: 0; /* Adjust as needed */
+  right: -45px; /* Move it to the right of the container */
   width: 40px;
   height: 40px;
   border: none;
   background-color: transparent;
   padding: 0;
   cursor: pointer;
-  opacity: 0.4;
-}
-
-.modal__close-btn:hover {
-  opacity: 1;
 }
 
 .modal__close-btn_type_preview {
@@ -69,12 +77,13 @@
 }
 
 .modal__title {
-  margin: 0 0 32px;
-  font-family: poppins, Arial, sans-serif;
-  font-size: 32px;
-  line-height: 1;
+  font-family: Poppins;
   font-weight: 500;
-  color: #212121;
+  font-style: Medium;
+  font-size: 24px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
 }
 
 .modal__form {
@@ -85,7 +94,8 @@
 .modal__form_delete {
   display: flex;
   flex-direction: row;
-  gap: 10px;
+  gap: 20px;
+  justify-content: center;
 }
 
 .modal__label {
@@ -147,6 +157,56 @@
   background-color: #212121;
   opacity: 0.5;
   color: #fcf5e5;
+}
+
+.modal__delete-btn {
+  background-color: #ff6565; /* Red background for delete button */
+  color: #212112; /* Dark text color for contrast */
+  font-family: Poppins;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  cursor: pointer;
+}
+
+/* Hover effect for delete button */
+.modal__delete-btn:hover {
+  background-color: #ff3333; /* Slightly darker red on hover */
+}
+
+#delete-modal .modal__container {
+  max-width: 630px;
+  /* height: 172px; */
+  border-radius: 8px;
+  padding-top: 32px;
+  padding-right: 20px;
+  padding-left: 20px;
+  gap: 32px;
+  opacity: 1;
+}
+
+.modal__cancel-btn {
+  width: 156;
+  height: 52;
+  border-radius: 8px;
+  padding-top: 18px;
+  padding-right: 32px;
+  padding-bottom: 18px;
+  padding-left: 32px;
+  gap: 8px;
+  opacity: 1;
+  border-width: 1px;
+  border-color: #212121;
+  border-style: solid;
+  background-color: #fff;
+  color: #212121;
+}
+
+.modal__cancel-btn:hover {
+  background-color: #212121;
+  color: #ffffff;
 }
 
 .modal__image-container {

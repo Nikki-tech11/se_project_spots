@@ -76,6 +76,7 @@
   line-clamp: 3;
   -webkit-box-orient: vertical;
   max-width: 420px;
+  font-family: Poppins;
 }
 
 .profile__description {
@@ -108,12 +109,10 @@
 
 .profile__avatar-container:hover .profile__avatar-btn {
   visibility: visible;
-  /* background-color: rgba(33, 33, 33, 0.6);
+  background-color: rgba(33, 33, 33, 0.6);
   color: #fcf5e5;
-  border-radius: 0 0 8px 8px;
-  height: 40px;
+  border-radius: 8px;
   cursor: pointer;
-} */
 }
 
 .profile__avatar-btn {
@@ -157,6 +156,12 @@
     font-size: 20px;
     margin: 0 0 6px;
     max-width: 288px;
+    font-style: Medium;
+    font-size: 20px;
+    leading-trim: NONE;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
   }
 
   .profile__add-btn {
@@ -171,6 +176,9 @@
   .profile__description {
     margin: 0 0 32px;
     max-width: 288px;
+    font-style: Medium;
+    leading-trim: NONE;
+    letter-spacing: 0%;
   }
 
   .profile__edit-btn {

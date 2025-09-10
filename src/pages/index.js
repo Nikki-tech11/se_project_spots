@@ -75,7 +75,7 @@ const previewCloseBtn = previewModal.querySelector(".modal__close-btn");
 //avatar modal elements
 const avatarModal = document.querySelector("#edit-avatar-modal"); // The avatar modal
 const avatarModalForm = avatarModal.querySelector(".modal__form"); // The form inside the
-const avatarUrlInput = avatarModal.querySelector("#avatar-url-input"); // Input field for the avatar URL
+const avatarUrlInput = avatarModal.querySelector("#profile-avatar-input"); // Input field for the avatar URL
 const avatarModalCloseBtn = avatarModal.querySelector(".modal__close-btn"); // Close button
 const avatarSubmitBtn = avatarModal.querySelector(".modal__save-btn"); // Submit button
 const avatarModalBtn = document.querySelector(".profile__avatar-btn"); // The button to open the avatar modal
@@ -83,6 +83,9 @@ const avatarModalBtn = document.querySelector(".profile__avatar-btn"); // The bu
 //delete modal elements
 const deleteModal = document.querySelector("#delete-modal");
 const deleteForm = deleteModal.querySelector(".modal__form");
+const deleteModalDeleteBtn = deleteModal.querySelector(".modal__delete-btn");
+const deleteModalCancelBtn = deleteModal.querySelector(".modal__cancel-btn");
+const deleteModalCloseBtn = deleteModal.querySelector(".modal__close-btn");
 
 let selectedCard;
 let selectedCardId;
@@ -99,6 +102,8 @@ const api = new Api({
 api
   .getAppInfo()
   .then(([cards, userInfo]) => {
+    console.log("User Info:", userInfo);
+
     // Destructure userInfo
     const { name, about, avatar } = userInfo;
 
@@ -106,7 +111,8 @@ api
     profileNameEl.textContent = name;
     profileDescriptionEl.textContent = about;
 
-    // profileAvatarEl.src = avatar;
+    console.log(avatar, "avatar data");
+    profileAvatarEl.src = avatar;
     // "Manager, go fetch the cards from the warehouse.." //.then((cards) => { ... }): "When you return, I’ll process the cards."
     cards.forEach((cardData) => {
       //"For each card in the package, I’ll create and display it."
@@ -137,18 +143,21 @@ addCardFormElement.addEventListener("submit", function (evt) {
 
       // Reset the form and close the modal
       addCardFormElement.reset();
+      disableButton(newPostSubmitBtn, settings); // Disable the submit button
       closeModal(newPostModal);
     })
     .catch((err) => {
       console.error(err); // Log any errors
-      alert("Failed to add the card. Please try again.").finally(() => {
-        newPostSubmitBtn.textContent = "Save"; // Revert the button text back to original
-      });
+      alert("Failed to add the card. Please try again.");
+    })
+    .finally(() => {
+      newPostSubmitBtn.textContent = "Save"; // Revert the button text back to original
     });
 });
 
 function handleAvatarFormSubmit(evt) {
   evt.preventDefault();
+  avatarSubmitBtn.textContent = "Saving...";
   api
     .editAvatarInfo({ avatar: avatarUrlInput.value }) // Correctly pass the avatar property
     .then((response) => {
@@ -157,7 +166,10 @@ function handleAvatarFormSubmit(evt) {
       closeModal(avatarModal); // Close the modal
       avatarModalForm.reset(); // Reset the form
     })
-    .catch(console.error); // Handle errors
+    .catch(console.error)
+    .finally(() => {
+      avatarSubmitBtn.textContent = "Save"; // Revert the button text back to original
+    }); // Handle errors
 }
 
 function openModal(modal) {
@@ -289,6 +301,10 @@ function getCardElement(data) {
     handleLikeButton(cardLikeBtn, cardId);
   });
 
+  if (data.isLiked) {
+    cardLikeBtn.classList.add("card__like-btn_active");
+  }
+
   cardDeleteBtn.addEventListener("click", () => {
     openModal(deleteModal);
     deleteCard(cardElement, cardId);
@@ -331,6 +347,27 @@ avatarModalCloseBtn.addEventListener("click", function () {
 avatarModalForm.addEventListener("submit", handleAvatarFormSubmit);
 
 deleteForm.addEventListener("submit", deleteSubmitHandler);
+
+// Close the delete modal when the close (X) button is clicked
+deleteModalDeleteBtn.addEventListener("click", () => {
+  closeModal(deleteModal);
+});
+
+deleteModalCloseBtn.addEventListener("click", () => {
+  closeModal(deleteModal);
+});
+
+// Close the delete modal when the cancel button is clicked
+deleteModalCancelBtn.addEventListener("click", () => {
+  closeModal(deleteModal);
+});
+
+// Close the delete modal when clicking on the overlay
+deleteModal.addEventListener("mousedown", (evt) => {
+  if (evt.target === deleteModal) {
+    closeModal(deleteModal);
+  }
+});
 
 document.addEventListener("keydown", function (evt) {
   if (evt.key === "Escape") {

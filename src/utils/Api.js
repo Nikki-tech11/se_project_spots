@@ -9,15 +9,18 @@ class Api {
     return Promise.all([this.getInitialCards(), this.getUserInfo()]);
   }
 
+  _checkResponse(res) {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Error: ${res.status}`);
+  }
+
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
       headers: this._headers, // Your access pass
     }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      // if the server returns an error, reject the promise
-      return Promise.reject(`Error: ${res.status}`);
+      return this._checkResponse(res);
     });
   }
 
@@ -31,11 +34,7 @@ class Api {
         link,
       }),
     }).then((res) => {
-      if (res.ok) {
-        return res.json(); // Return the newly created card
-      }
-      // if the server returns an error, reject the promise
-      return Promise.reject(`Error: ${res.status}`);
+      return this._checkResponse(res);
     });
   }
 
@@ -43,11 +42,7 @@ class Api {
     return fetch(`${this._baseUrl}/users/me`, {
       headers: this._headers, // Your access pass
     }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      // if the server returns an error, reject the promise
-      return Promise.reject(`Error: ${res.status}`);
+      return this._checkResponse(res);
     });
   }
 
@@ -61,11 +56,7 @@ class Api {
         about,
       }),
     }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      // if the server returns an error, reject the promise
-      return Promise.reject(`Error: ${res.status}`);
+      this._checkResponse(res);
     });
   }
 
@@ -78,11 +69,7 @@ class Api {
         avatar,
       }),
     }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      // if the server returns an error, reject the promise
-      return Promise.reject(`Error: ${res.status}`);
+      return this._checkResponse(res);
     });
   }
 
@@ -91,11 +78,7 @@ class Api {
       method: "DELETE",
       headers: this._headers,
     }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      // if the server returns an error, reject the promise
-      return Promise.reject(`Error: ${res.status}`);
+      return this._checkResponse(res);
     });
   }
 
@@ -104,11 +87,7 @@ class Api {
       method: isLiked ? "DELETE" : "PUT",
       headers: this._headers,
     }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      // if the server returns an error, reject the promise
-      return Promise.reject(`Error: ${res.status}`);
+      return this._checkResponse(res);
     });
   }
 }
